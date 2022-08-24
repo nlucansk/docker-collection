@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Build.DockerImage
 
 on:
   push:
@@ -17,6 +17,6 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PAT }}
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag python-terraform-cdk:$(date +%s)
-      
-      
+      run: |
+        docker build . --file Dockerfile --tag nlucansk/python-terraform-cdk:$(date +%s)
+        docker push nlucansk/python-terraform-cdk:$(date +%s)
