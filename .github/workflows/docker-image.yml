@@ -7,13 +7,15 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
+    - name: Docker Login
+      uses: docker/login-action@v2.0.0
+      with:
+        username: $DOCKER_USERNAME
+        password: $DOCKER_PAT
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag python-terraform-cdk:$(date +%s)
       
