@@ -18,5 +18,5 @@ jobs:
         password: ${{ secrets.DOCKER_PAT }}
     - name: Build the Docker image
       run: |
-        docker build . --file Dockerfile --tag nlucansk/python-terraform-cdk:$(date +%s)
-        docker push nlucansk/python-terraform-cdk:$(date +%s)
+        docker build . --file Dockerfile --tag nlucansk/python-terraform-cdk:$GITHUB_REF_NAME-$GITHUB_RUN_ATTEMPT
+        docker push nlucansk/python-terraform-cdk:$GITHUB_REF_NAME-$GITHUB_RUN_ATTEMPT
