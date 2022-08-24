@@ -19,4 +19,6 @@ jobs:
     - name: Build the Docker image
       run: |
         docker build . --file Dockerfile --tag nlucansk/python-terraform-cdk:$GITHUB_REF_NAME-$GITHUB_RUN_ATTEMPT
+        docker tag nlucansk/python-terraform-cdk:$GITHUB_REF_NAME-$GITHUB_RUN_ATTEMPT nlucansk/python-terraform-cdk:$GITHUB_REF_NAME
+        docker push nlucansk/python-terraform-cdk:$GITHUB_REF_NAME
         docker push nlucansk/python-terraform-cdk:$GITHUB_REF_NAME-$GITHUB_RUN_ATTEMPT
